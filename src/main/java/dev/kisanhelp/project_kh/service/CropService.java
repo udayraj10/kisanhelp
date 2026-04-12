@@ -73,4 +73,25 @@ public class CropService {
                 return ResponseEntity.ok(CropResponse.success(response));
         }
 
+        public ResponseEntity<CropResponse<CropData>> getByCropName(String cropName) {
+                Crop crop = cropRepository.findByCropName(cropName)
+                                .orElseThrow(() -> new CropNotFoundException("No crop found named: " + cropName));
+                CropData cropData = new CropData(
+                                crop.getId(),
+                                crop.getCropName(),
+                                crop.getCategory(),
+                                crop.getWeeksToHarvest(),
+                                crop.getMinTempCelsius().intValue(),
+                                crop.getMaxTempCelsius().intValue(),
+                                crop.getWaterNeedMM(),
+                                crop.getSeasons().stream()
+                                                .map(seasonEntity -> seasonEntity.getName())
+                                                .toList(),
+                                crop.getSoilSuitabilities().stream()
+                                                .filter(soil -> soil.getIsSuitable())
+                                                .map(soil -> soil.getSoilType())
+                                                .toList());
+                return ResponseEntity.ok(CropResponse.success(cropData));
+        }
+
 }

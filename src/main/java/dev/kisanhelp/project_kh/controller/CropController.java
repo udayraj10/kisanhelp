@@ -28,4 +28,9 @@ public class CropController {
 
         return cropService.getFilteredCrops(soilType, season, category);
     }
+
+    @GetMapping("/name")
+    public ResponseEntity<CropResponse<CropData>> getByCropName(@RequestParam String cropName) {
+        return cropService.getByCropName(cropName);
+    }
 }
