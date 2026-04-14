@@ -1,6 +1,8 @@
 # KisanHelp Backend
 
-A Spring Boot REST API for crop recommendations, soil suitability, and filtered crop discovery. The application uses Spring Boot 3.5.11, Spring Data JPA, Spring Security with JWT authentication, and MySQL as the runtime database.
+KisanHelp is a web-based crop advisory system designed to assist Indian farmers in making informed agricultural decisions. The system provides personalized recommendations for fertilizer application and water scheduling based on the farmer's selected crop, soil type, and growing season. By centralizing crop suitability data, soil-crop compatibility, fertilizer plans, and water schedules in a structured database, the platform eliminates the need for farmers to rely on informal or outdated advice. The application is built using a full-stack architecture with a Java Spring Boot backend and a React-based frontend, offering a clean and accessible interface for farmers across different districts.
+
+The system follows a three-tier client-server architecture. The React frontend handles user interaction and API communication using Axios with JWT token headers. The Spring Boot backend exposes secured REST API endpoints and contains all business logic including crop suitability checks, fertilizer plan retrieval, and water schedule lookups. User authentication is handled via Spring Security with BCrypt password encoding and stateless JWT token validation.
 
 ## Key Features
 
