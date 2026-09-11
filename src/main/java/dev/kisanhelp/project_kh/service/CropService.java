@@ -24,9 +24,7 @@ public class CropService {
 
         public Crop getCrop(String cropName) {
                 return cropRepository.findByCropName(cropName)
-                                .orElseThrow(() -> {
-                                        return new CropNotFoundException("No crop found named: " + cropName);
-                                });
+                                .orElseThrow(() -> new CropNotFoundException("No crop found named: " + cropName));
         }
 
         public List<String> getRecommendedCrops(String soilType) {
@@ -38,7 +36,7 @@ public class CropService {
         public ResponseEntity<CropResponse<List<CropData>>> getFilteredCrops(String soilType, String season,
                         String category) {
 
-                Specification<Crop> spec = Specification.where(null);
+                Specification<Crop> spec = Specification.unrestricted();
 
                 if (soilType != null && !soilType.isEmpty()) {
                         spec = spec.and(CropSpecification.hasSoilType(SoilType.fromString(soilType)));
