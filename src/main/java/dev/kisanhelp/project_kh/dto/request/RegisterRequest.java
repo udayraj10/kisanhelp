@@ -27,5 +27,7 @@ public class RegisterRequest {
 
     @NotNull(message = "land area is required")
     Double landArea;
+
+    @NotBlank
     String password;
 }
