@@ -4,6 +4,10 @@ KisanHelp is a web-based agricultural advisory system designed to assist Indian 
 
 ---
 
+Live link: https://kisanhelp.onrender.com
+
+---
+
 ## Architecture Overview
 
 The system uses a layered backend architecture built on Spring Boot 3.5.11, following domain-driven patterns to decouple data persistence, business logic, and API endpoints.
