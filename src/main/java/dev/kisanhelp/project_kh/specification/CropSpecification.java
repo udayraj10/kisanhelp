@@ -10,7 +10,7 @@ public class CropSpecification {
 
     public static Specification<Crop> hasSoilType(SoilType soilType) {
         return (root, query, cb) -> {
-            if (soilType == null)
+            if (soilType == null)   
                 return null;
 
             query.distinct(true);
@@ -28,7 +28,7 @@ public class CropSpecification {
                 return null;
 
             query.distinct(true);
-            var join = root.join("seasons", JoinType.LEFT);
+            var join = root.join("seasons", JoinType.INNER);
             return cb.equal(join.get("name"), season);
         };
     }
