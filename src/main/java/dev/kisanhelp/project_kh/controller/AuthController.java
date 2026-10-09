@@ -14,12 +14,15 @@ import dev.kisanhelp.project_kh.dto.request.RegisterRequest;
 import dev.kisanhelp.project_kh.dto.response.JwtResponse;
 import dev.kisanhelp.project_kh.security.JwtUtil;
 import dev.kisanhelp.project_kh.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
+@Tag(name = "Authentication", description = "Register an account and obtain a JWT.")
 public class AuthController {
 
     private final UserService userService;
@@ -27,11 +30,13 @@ public class AuthController {
     private final JwtUtil jwtUtil;
 
     @PostMapping("/register")
+    @Operation(summary = "Register a user")
     public ResponseEntity<JwtResponse> register(@Valid @RequestBody RegisterRequest request) {
         return userService.register(request);
     }
 
     @PostMapping("/login")
+    @Operation(summary = "Log in and receive a JWT")
     public ResponseEntity<JwtResponse> login(@RequestBody LoginRequest request) {
         try {
             authenticationManager.authenticate(

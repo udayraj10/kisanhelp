@@ -4,7 +4,8 @@ KisanHelp is a web-based agricultural advisory system designed to assist Indian 
 
 ---
 
-Live link: https://kisanhelp.onrender.com
+Live link: https://kisanhelp.onrender.com \
+Docs: https://kisanhelp.onrender.com/swagger-ui.html
 
 ---
 
@@ -73,6 +74,8 @@ Security is managed via Spring Security using a custom filter chain:
 ---
 
 ## Core API Reference
+
+Interactive API documentation is available at `/swagger-ui.html` after starting the application. The OpenAPI JSON is available at `/v3/api-docs`. Both documentation endpoints are public. Use **Authorize** in Swagger UI with a JWT to try protected endpoints.
 
 ### Authentication & User Management
 
